@@ -67,7 +67,7 @@ total = 42
 Enter your solution below.
 
 ```elixir
-
+1 + 1
 ```
 
 ## Rocket Ship
