@@ -281,7 +281,6 @@ Unlike with keyword lists, we don't have to match on every key/value pair when p
 
 ```elixir
 %{one: one} = %{one: 1, two: 2}
-one
 ```
 
 This also works with non-atom key maps.

@@ -154,7 +154,7 @@ the keyword list as a list of tuples.
 The keyword list syntax must come at the end of a list, or we'll cause a [SyntaxError](https://hexdocs.pm/elixir/SyntaxError.html).
 
 ```elixir
-[key: "value", ""]
+[key: "value"]
 ```
 
 List order is guaranteed, so the same is true for keyword lists.

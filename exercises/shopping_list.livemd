@@ -59,7 +59,16 @@ shopping_cart = shopping_cart ++ ["banana", "banana", "banana"]
 Enter your solution below.
 
 ```elixir
+# shopping_cart1 = []
 
+# shopping_cart1 = ["grapes", "walnuts", "apples"] ++ ["blueberries", "chocalate", "pizza"] -- ["grapes", "walnuts"] ++ ["banana", "banana", "banana"]
+
+shopping_cart = []
+
+shopping_cart = shopping_cart ++ ["grapes", "walnuts", "apples"]
+shopping_cart = shopping_cart ++ ["blueberries", "chocolate", "pizza"]
+shopping_cart = shopping_cart -- ["grapes", "walnuts"]
+shopping_cart = shopping_cart ++ ["banana", "banana", "banana"]
 ```
 
 ## Text Shopping List With Quantities
@@ -91,7 +100,13 @@ shopping_cart = shopping_cart ++ [candies: 5]
 </details>
 
 ```elixir
+shopping_cart = []
 
+shopping_cart = shopping_cart ++ [milk: 1, eggs: 12]
+shopping_cart = shopping_cart ++ [bars_of_butter: 2, candies: 10]
+shopping_cart = shopping_cart -- [bars_of_butter: 2]
+shopping_cart = shopping_cart -- [candies: 10]
+shopping_cart = shopping_cart ++ [candies: 5]
 ```
 
 ## Commit Your Progress
