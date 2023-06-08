@@ -256,6 +256,8 @@ put_in(
 
 Enter your solution below.
 
+## Bonus: Pattern Matching
+
 ```elixir
 treasure_map = %{
   "south ten paces" => %{
@@ -270,11 +272,9 @@ treasure_map = %{
     }
   }
 }
-
-%{treasure_map | dig: "taken"}
+%{dig: => "taken"} = %{"south ten paces" => %{10 => %{:"east three paces" => %{[1, 2, 3] => %{{"turn", "right"} => %{:dig => "taken"}}}}}}
+:dig
 ```
-
-## Bonus: Pattern Matching
 
 Use pattern matching to bind the `"Exit!"` string to an `exit` variable.
 

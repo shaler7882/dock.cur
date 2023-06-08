@@ -640,7 +640,14 @@ multiply = fn int1, int2 -> int1 * int2 end
 Enter your solution below.
 
 ```elixir
+add = fn int1, int2 -> int1 + int2 end
+subtract = fn int1, int2 -> int1 - int2 end
+multiply = fn int1, int2 -> int1 * int2 end
 
+10
+|> add.(2)
+|> multiply.(5)
+|> subtract.(4)
 ```
 
 ## Commit Your Progress

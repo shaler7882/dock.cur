@@ -278,7 +278,7 @@ We can provide any number of cases. Cases use pattern matching to decide which r
 Return each value from `1` to `5` by changing the `condition` variable below.
 
 ```elixir
-condition = nil
+condition = %{key: "value"}
 
 case condition do
   :red -> 1
@@ -378,7 +378,7 @@ end
 Return each result from `1` to `5` by changing the `condition` variable below.
 
 ```elixir
-condition = nil
+condition = %{key1: "value", key2: "value"}
 
 case condition do
   [1, 2, 3] -> 1
