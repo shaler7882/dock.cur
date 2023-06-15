@@ -60,48 +60,30 @@ end
 </details>
 
 ```elixir
+word1 = "sit"
+word2 = "itse"
+word1_split = String.split(word1, "", trim: true) |> Enum.sort()
+word2_split = String.split(word2, "", trim: true) |> Enum.sort()
+
+word1_split == word2_split
+```
+
+```elixir
 defmodule Anagram do
-  @moduledoc """
-  Documentation for `Anagram`.
-  """
-
-  @doc """
-  Determine if two strings are anagrams.
-
-  ## Examples
-
-    iex> Anagram.anagram?("abc", "bac")
-    true
-
-    iex> Anagram.anagram?("sit", "its")
-    true
-
-    iex> Anagram.anagram?("cats", "dogs")
-    false
-
-    iex> Anagram.anagram?("robed", "bored")
-    true
-  """
   def anagram?(word, possible_anagram) do
+    word1_split = String.split(word, "", trim: true) |> Enum.sort()
+    word2_split = String.split(possible_anagram, "", trim: true) |> Enum.sort()
+
+    word1_split == word2_split
   end
 
-  @doc """
-  Filter anagrams.
-
-  ## Examples
-
-    iex> Anagram.filter_anagrams(["abc", "bca", "abcd", "cat"], "bac")
-    ["abc", "bca"]
-
-    iex> Anagram.filter_anagrams(["rams", "mars", "arms", "alarms"], "arms")
-    ["rams", "mars", "arms"]
-
-    iex> Anagram.filter_anagrams(["stop"], "go")
-    []
-  """
   def filter_anagrams(word_list, anagram) do
+    Enum.filter(word_list, fn each -> anagram?(each, anagram) end)
   end
 end
+
+Anagram.anagram?("sit", "its")
+Anagram.filter_anagrams(["abc", "bca", "abcd", "cat"], "bac")
 ```
 
 ## Bonus: Anagram Solver

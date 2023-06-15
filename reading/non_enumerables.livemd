@@ -212,24 +212,14 @@ end
 
 ```elixir
 defmodule CharacterCount do
-  @moduledoc """
-  Character Count
-  """
-
-  @doc """
-  Count the number of characters in a string
-
-  ## Examples
-
-      iex> CharacterCount.count("abc")
-      3
-
-      iex> CharacterCount.count("abcd")
-      4
-  """
   def count(string) do
+    string
+    |> String.split("", trim: true)
+    |> Enum.count()
   end
 end
+
+CharacterCount.count("Haler")
 ```
 
 ## Further Reading

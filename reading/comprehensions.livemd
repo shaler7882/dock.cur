@@ -327,7 +327,9 @@ end
 </details>
 
 ```elixir
-
+for a <- 1..7, b <- 1..7, c <- 1..7, a + b + c == 7 do
+  {a, b, c}
+end
 ```
 
 ## Collectables
