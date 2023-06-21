@@ -276,6 +276,10 @@ This is actually the hexadecimal code for `16777215`. you can add the placeholde
 value like so:
 
 ```elixir
+
+```
+
+```elixir
 1_048_576 * 15 + 65536 * 15 + 4096 * 15 + 256 * 15 + 16 * 15 + 15
 ```
 

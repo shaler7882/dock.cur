@@ -99,6 +99,17 @@ Enter your solution below.
 
 ```elixir
 defmodule Timeline do
+  def from_dates(dates) do
+    IO.inspect(dates)
+    Enum.each(dates, fn each -> nil end)
+  end
+end
+
+Timeline.from_dates([~D[2020-01-01], ~D[2020-01-02], ~D[2020-01-22]])
+```
+
+```elixir
+defmodule Timeline do
   @moduledoc """
   Documentation for `Timeline`
   """
