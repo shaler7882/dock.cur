@@ -302,7 +302,7 @@ String.split("abc", "", trim: true)
 Find all of the single digit characters in this string to make `["1", "2", "2", "3"]`
 
 ```elixir
-String.split("a1b22c3", 
+"a1b22c3"
 ```
 
 Determine if the `<<2::2>>` bitstring is a valid binary. This should be `false`.
