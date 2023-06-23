@@ -133,7 +133,12 @@ defmodule Lucas do
     iex> Lucas.number(20)
     15127
   """
+
+  def number(0), do: 2
+  def number(1), do: 1
+
   def number(n) do
+    number(n - 1) + number(n - 2)
   end
 
   @doc """
@@ -158,8 +163,15 @@ defmodule Lucas do
   """
 
   def sequence(length) do
+    range = Enum.to_list(1..length)
+
+    Enum.reduce(range, fn each, acc ->
+      number(each)
+    end)
   end
 end
+
+Lucas.sequence(5)
 ```
 
 ## Commit Your Progress
