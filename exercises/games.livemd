@@ -52,6 +52,10 @@ You should create a [new GitHub repository](https://github.com/new) for this pro
 
 ## Commit Your Progress
 
+```elixir
+
+```
+
 DockYard Academy now recommends you use the latest [Release](https://github.com/DockYard-Academy/curriculum/releases) rather than forking or cloning our repository.
 
 Run `git status` to ensure there are no undesirable changes.
