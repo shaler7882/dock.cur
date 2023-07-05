@@ -49,71 +49,88 @@ jewel
 Use pattern matching to bind a `jewel` variable to the `"jewel"` string. Each cell should return the `jewel` variable to prove it was bound correctly.
 
 ```elixir
-[1, 2, 3, "jewel"]
+[1, 2, 3, value] = [1, 2, 3, "jewel"]
+value
 ```
 
 ```elixir
-%{key1: "value", key2: "jewel"}
+%{key1: "value", key2: value} = %{key1: "value", key2: "jewel"}
+value
 ```
 
 ```elixir
-%{1 => "jewel"}
+%{1 => value} = %{1 => "jewel"}
+value
 ```
 
 ```elixir
-%{%{key: [1, 2, 3, 4, 5, {}]} => "jewel"}
+%{%{key: [1, 2, 3, 4, 5, {}]} => value} = %{%{key: [1, 2, 3, 4, 5, {}]} => "jewel"}
+value
 ```
 
 ```elixir
-%{north: %{south: %{west: %{east: "jewel"}}}}
+%{north: %{south: %{west: %{east: value}}}} = %{north: %{south: %{west: %{east: "jewel"}}}}
+value
 ```
 
 ```elixir
-[2, "jewel"]
+[2, value] = [2, "jewel"]
+value
 ```
 
 ```elixir
-["jewel", 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+[value, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] = ["jewel", 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+value
 ```
 
 ```elixir
-[1, "jewel", 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+[1, value, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] = [1, "jewel", 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+value
 ```
 
 ```elixir
-[1, 2, "jewel", 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+[1, 2, value, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] = [1, 2, "jewel", 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+value
 ```
 
 ```elixir
-[[], [1, [2, "jewel"]]]
+[[], [1, [2, value]]] = [[], [1, [2, "jewel"]]]
+value
 ```
 
 ```elixir
-"here is the jewel"
+"here is the " <> value = "here is the jewel"
+value
 ```
 
 ```elixir
-{"jewel"}
+{value} = {"jewel"}
+value
 ```
 
 ```elixir
-{"jewel", 1}
+{value, 1} = {"jewel", 1}
+value
 ```
 
 ```elixir
-{1, 2, "jewel"}
+{1, 2, value} = {1, 2, "jewel"}
+value
 ```
 
 ```elixir
-["jewel"] ++ Enum.to_list(1..100)
+[head | tail] = ["jewel"] ++ Enum.to_list(1..100)
+head
 ```
 
 ```elixir
-[key: "jewel"]
+[key: value] = [key: "jewel"]
+value
 ```
 
 ```elixir
-[south: "jewel", east: {1, 2}]
+[south: value, east: {1, 2}] = [south: "jewel", east: {1, 2}]
+value
 ```
 
 ```elixir
@@ -154,7 +171,12 @@ defmodule Sum do
   iex> Sum.list([1, 2, 3])
   6
   """
+  def list(list, sum \\ 0)
+  def list([], sum), do: sum
+  def list([head | tail], sum), do: list(tail, sum + head)
 end
+
+Sum.list([1, 2, 3])
 ```
 
 ## Commit Your Progress

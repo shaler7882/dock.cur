@@ -648,6 +648,8 @@ multiply = fn int1, int2 -> int1 * int2 end
 |> add.(2)
 |> multiply.(5)
 |> subtract.(4)
+
+Enum.member?(1..10, test_number)
 ```
 
 ## Commit Your Progress

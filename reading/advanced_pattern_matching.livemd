@@ -186,7 +186,7 @@ defmodule Check do
       iex> Check.must_have_elements!([])
       ** (FunctionClauseError) no function clause matching in Check.must_have_elements!/1
   """
-  def must_have_elements!(list) do
+  def must_have_elements!([head | tail] = list) do
     true
   end
 end
@@ -291,8 +291,25 @@ defmodule Greeter do
       iex> Greeter.hello(["Swamy", "Jeff", "Jeremy"])
       "Hello everyone!"
   """
-  def hello(names) do
+  def hello([head | tail] = names) do
+    case names do
+      [_] -> "Hi #{head}!"
+      [_, _] -> "Hi #{head}, Hello #{tail}!"
+      [_, _, _] -> "Hello everyone!"
+    end
   end
+
+  # def hello([name1]) do
+  #  "Hi #{name1}!"
+  # end
+
+  # def hello([name1, name2]) do
+  #  "Hi #{name1}, Hello #{name2}!"
+  # end
+  #
+  # def hello([name1, name2, name3]) do
+  #  "Hello everyone!"
+  # end
 end
 ```
 
@@ -355,6 +372,13 @@ end)
 
 ```elixir
 
+```
+
+```elixir
+Enum.map([{:double, 2}, {:halve, 10}, {:double, 4}], fn
+  {:double, integer} -> round(integer * 2)
+  {:halve, integer} -> div(integer, 2)
+end)
 ```
 
 ## Pattern Matching Vs. If

@@ -50,8 +50,6 @@ git commit -m "initialize mix project"
 
 You should create a [new GitHub repository](https://github.com/new) for this project so that you can push your changes and manage it using source control.
 
-## Commit Your Progress
-
 ```elixir
 
 ```
