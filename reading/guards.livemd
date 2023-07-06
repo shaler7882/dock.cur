@@ -94,6 +94,8 @@ end
 NumberGuardExample.double(1.3)
 ```
 
+## Defguard
+
 Guards must return `true` or `false` values and be pure input and output.
 
 You can reference the [Guard Documentation](https://hexdocs.pm/elixir/master/patterns-and-guards.html#guards) for a full list.
@@ -105,7 +107,7 @@ You can reference the [Guard Documentation](https://hexdocs.pm/elixir/master/pat
 * "type-check" functions (`is_list/1`, `is_number/1`, `is_map/1`, `is_binary/1`, `is_integer/1` etc)
 * functions that work on built-in datatypes (`hd/1`, `tail/1`, `length/1` and others)
 
-## Defguard
+<!-- livebook:{"break_markdown":true} -->
 
 You can define your own custom guard with `defguard`. For example, let's say
 we're building a rock paper scissors game which should only accept `:rock`, `:paper`, and `:scissors` as

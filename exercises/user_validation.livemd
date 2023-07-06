@@ -64,22 +64,23 @@ defmodule User do
   """
   defstruct [:name]
 
-  def validate_users(users) do
+  def validate_users(users) when is_list(users) do
     Enum.map(users, fn user ->
-      with %User{name: name} <- user, true <- {:missing_name, is_binary(name)} do
-        {:ok, user}
+      with %User{name: name} <- user, true <- is_binary(name) do
+        {:ok, %User{name: "valid user"}}
       else
-        false ->
-          {:error, :missing_name}
-
-        _ ->
-          {:e}
-          IO.inspect(thing)
-          :error
+        false -> {:error, :missing_name}
+        _ -> {:error, :not_a_user}
       end
     end)
   end
+
+  def validate_users(_users) do
+    [:error, "not a list"]
+  end
 end
+
+User.validate_users(16)
 ```
 
 ## Commit Your Progress

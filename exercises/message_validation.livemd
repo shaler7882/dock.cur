@@ -79,6 +79,10 @@ end
 Implement the `Message` module as documented below.
 
 ```elixir
+Message.send(1)
+```
+
+```elixir
 defmodule Message do
   @moduledoc """
   Send messages between users.
@@ -104,6 +108,17 @@ defmodule Message do
   def send(message) when is_bitstring(message.body) do
     "Sent: " <> message.body
   end
+end
+
+Message.send(1)
+```
+
+```elixir
+value = 1
+
+cond do
+  value.body == 1 -> "1"
+  value == 1 -> "2"
 end
 ```
 
