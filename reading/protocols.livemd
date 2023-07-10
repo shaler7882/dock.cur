@@ -120,7 +120,11 @@ So if we give the protocol an integer, it will use the implementation for [Integ
 If we provide the protocol a string, it will use the implementation for `BitString`, and
 if we provide the protocol a list, it will use the implementation for [List](https://hexdocs.pm/elixir/List.html).
 
-<!-- livebook:{"break_markdown":true} -->
+```elixir
+defprotocol Adder do
+  def add(value, value)
+end
+```
 
 ```mermaid
 flowchart
@@ -144,11 +148,7 @@ which data type the protocol implementation is for.
 We define a protocol using `defprotocol` and define a function clause. We only need the function
 head, not the function body.
 
-```elixir
-defprotocol Adder do
-  def add(value, value)
-end
-```
+<!-- livebook:{"break_markdown":true} -->
 
 We've defined a protocol above, but we haven't implemented it for any data type yet.
 

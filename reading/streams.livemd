@@ -350,7 +350,8 @@ flowchart LR
 ```
 
 ```elixir
-Stream.iterate(0, fn accumulator -> accumulator + 1 end) |> Enum.take(5)
+Stream.iterate(0, fn accumulator -> accumulator + 1 end)
+|> Enum.take(5)
 ```
 
 The initial value of the accumulator will be `0`. The next value of the accumulator will

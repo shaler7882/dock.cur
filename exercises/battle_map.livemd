@@ -100,7 +100,19 @@ end
 
 ```elixir
 # Implementation Goes Here:
+defimpl Character, for: Barbarian do
+  def can_attack?(_character, {org1, org2}, {tar1, tar2}) do
+    if abs(org1 - tar1) <= 2 and abs(org2 - tar2) <= 2 do
+      true
+    else
+      false
+    end
+  end
+end
 
+Character.can_attack?(%Barbarian{}, {4, 4}, {1, 1})
+Character.can_attack?(%Barbarian{}, {4, 4}, {7, 7})
+Character.can_attack?(%Barbarian{}, {3, 3}, {6, 6})
 # You May Use The Following Test Suite To Validate Your Solution.
 ExUnit.start(auto_run: false)
 
@@ -163,6 +175,15 @@ Create a `Wizard` implementation for the `Character` protocol.
 
 ```elixir
 # Implementation Goes Here:
+defimpl Character, for: Wizard do
+  def can_attack?(_character, {org1, org2}, {tar1, tar2}) do
+    if org1 == tar1 or org2 == tar2 or abs(org1 - tar1) == abs(org2 - tar2) do
+      true
+    else
+      false
+    end
+  end
+end
 
 # You May Use The Following Test Suite To Validate Your Solution.
 ExUnit.start(auto_run: false)
