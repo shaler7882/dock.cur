@@ -107,8 +107,8 @@ Stream.iterate(0, fn accumulator -> accumulator - 1 end)
 Use [Stream.iterate/2](https://hexdocs.pm/elixir/Stream.html#iterate/2) and [Enum.take/2](https://hexdocs.pm/elixir/Enum.html#take/2) to generate a list of `2` to increasing powers by multiplying the accumulator by two. i.e. $2^1$, $2^2$, $2^3$, $2^4$.
 
 ```elixir
-Stream.iterate(1, fn accumulator -> 2 ** accumulator end)
-|> Enum.take(4)
+Stream.iterate(1, fn acc -> 2 * acc end)
+|> Enum.take(5)
 ```
 
 ## Stream.unfold/2

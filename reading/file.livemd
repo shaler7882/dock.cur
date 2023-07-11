@@ -246,6 +246,10 @@ end
 :erlang.term_to_binary(%{key: "value"})
 ```
 
+```elixir
+
+```
+
 When reading the saved binary, we need to convert it back into an elixir term using `:erlang.term_to_binary/1`.
 
 <!-- livebook:{"break_markdown":true} -->

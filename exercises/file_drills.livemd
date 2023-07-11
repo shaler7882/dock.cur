@@ -41,7 +41,7 @@ This set of drills is for the [File](../reading/file.livemd) module. Follow the 
 Use [File.ls/1](https://hexdocs.pm/elixir/File.html#ls/1) to list all of the files/folders in the current path.
 
 ```elixir
-
+File.ls!()
 ```
 
 Use [File.ls/1](https://hexdocs.pm/elixir/File.html#ls/1) to list all of the files/folders in the parent directory of the current path.
@@ -53,55 +53,55 @@ Use [File.ls/1](https://hexdocs.pm/elixir/File.html#ls/1) to list all of the fil
 Use [File.mkdir/1](https://hexdocs.pm/elixir/File.html#mkdir/1) to create a directory called `drills`.
 
 ```elixir
-
+# File.mkdir!("drills")
 ```
 
 Use [File.dir?/2](https://hexdocs.pm/elixir/File.html#dir?/2) to check that `drills` is a folder.
 
 ```elixir
-
+File.dir?("drills")
 ```
 
 Use [File.write/3](https://hexdocs.pm/elixir/File.html#write/3) to create an empty file called `drills.txt`.
 
 ```elixir
-
+File.write!("drills/drills.txt", "test")
 ```
 
 Use [File.exists?/2](https://hexdocs.pm/elixir/File.html#exists?/2) to check that the `drills.txt` file exists.
 
 ```elixir
-
+File.exists?("drills/drills.txt")
 ```
 
 Use [File.dir?/2](https://hexdocs.pm/elixir/File.html#dir?/2) to check that `drills.txt` is not a folder.
 
 ```elixir
-
+File.dir?("drills/drills.txt")
 ```
 
 Use [File.write/3](https://hexdocs.pm/elixir/File.html#write/3) to create a filed called `hello.txt` with the content `"world"`.
 
 ```elixir
-
+File.write!("drills/hello.txt", "world")
 ```
 
 Use [File.read/1](https://hexdocs.pm/elixir/File.html#read/1) to read the content of the `hello.txt` file.
 
 ```elixir
-
+File.read!("drills/hello.txt")
 ```
 
 Use [File.write/3](https://hexdocs.pm/elixir/File.html#write/3) to create an empty file in the `drills` folder you previously created.
 
 ```elixir
-
+File.write!("drills/empty.txt", "test empty")
 ```
 
 Use [File.write/3](https://hexdocs.pm/elixir/File.html#write/3) to create an `error/no_entity.txt` file that should return `{:error, :enoent}` because the `error` folder does not exist.
 
 ```elixir
-
+File.write("error/no_entity.txt", "should not work")
 ```
 
 Use [File.write/3](https://hexdocs.pm/elixir/File.html#write/3) to create a file `multi-line.txt` with a multi-line string.
@@ -119,19 +119,28 @@ line 5
 ```
 
 ```elixir
+multiline_string = """
+line 1
+line 2
+line 3
+line 4
+line 5
+"""
 
+File.write("drills/multi-line.txt", multiline_string)
 ```
 
 Use [File.read/1](https://hexdocs.pm/elixir/File.html#read/1) to read `multi-line.txt`.
 
 ```elixir
-
+File.read("drills/multi-line.txt")
 ```
 
 Use [File.stream!/3](https://hexdocs.pm/elixir/File.html#stream!/3) to read each line of `multi-line.txt` and convert it to a list of lines using [Enum.to_list/1](https://hexdocs.pm/elixir/Enum.html#to_list/1).
 
 ```elixir
-
+stream = File.stream!("drills/multi-line.txt") |> IO.inspect(label: "Stream")
+Enum.to_list(stream) |> IO.inspect(label: "Lines")
 ```
 
 Use [File.stream!/3](https://hexdocs.pm/elixir/File.html#stream!/3) and [Stream.filter/2](https://hexdocs.pm/elixir/Stream.html#filter/2) to filter in lines from `multi-line.txt` that contain numbers less than `3`.
@@ -149,13 +158,18 @@ line 3
 ```
 
 ```elixir
-
+stream = File.stream!("drills/multi-line.txt")
+file_filter = Stream.filter(stream, fn each -> each <= 3 end)
+File.write("drills/multi-line.txt", :erlang.term_to_binary(file_filter))
 ```
 
 Use [File.open/2](https://hexdocs.pm/elixir/File.html#open/2), [IO.binread/2](https://hexdocs.pm/elixir/IO.html#binread/2), and [File.close/1](https://hexdocs.pm/elixir/File.html#close/1) to read the first line of `multi-line.txt`. Print the value.
 
 ```elixir
-
+{:ok, file} = File.open("drills/multi-line.txt", [:read, :compressed])
+IO.binread(file, :line)
+:erlang.binary_to_term(file)
+# File.close(file)
 ```
 
 Use [File.mkdir_p/1](https://hexdocs.pm/elixir/File.html#mkdir_p/1) to create:
@@ -165,7 +179,9 @@ Use [File.mkdir_p/1](https://hexdocs.pm/elixir/File.html#mkdir_p/1) to create:
 * `"parent/sub_c"`
 
 ```elixir
-
+File.mkdir_p("drills/parent/sub_a/")
+File.mkdir_p("drills/parent/sub_b/")
+File.mkdir_p("drills/parent/sub_c/")
 ```
 
 Use [File.write!/3](https://hexdocs.pm/elixir/File.html#write!/3) to create six empty files:
@@ -178,13 +194,18 @@ Use [File.write!/3](https://hexdocs.pm/elixir/File.html#write!/3) to create six 
 * `"parent/sub_c/file"`
 
 ```elixir
-
+File.write!("drills/parent/sub_a/file.txt")
+File.write!("drills/parent/sub_a/file")
+File.write!("drills/parent/sub_b/file.txt")
+File.write!("drills/parent/sub_b/file")
+File.write!("drills/parent/sub_c/file.txt")
+File.write!("drills/parent/sub_c/file")
 ```
 
 Use [File.ls!/1](https://hexdocs.pm/elixir/File.html#ls!/1) to find all of the files/folders inside of the `parent` folder.
 
 ```elixir
-
+File.ls("drills/parent")
 ```
 
 ## Path
