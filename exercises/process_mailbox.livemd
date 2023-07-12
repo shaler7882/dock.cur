@@ -142,10 +142,18 @@ defmodule Mailbox do
     receive do
       {:send, message} ->
         IO.inspect(message)
-        loop([message, state])
+        loop([message | state])
 
-      {:read, message} ->
-        IO.inspect(message)
+      {:read, from_pid} ->
+        case state do
+          [head | tail] ->
+            send(from_pid, head)
+            loop(tail)
+
+          [] ->
+            send(from_pid, :empty)
+            loop([])
+        end
     end
   end
 end
