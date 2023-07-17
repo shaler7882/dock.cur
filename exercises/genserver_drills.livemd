@@ -267,8 +267,9 @@ end
 
 ```elixir
 {:ok, pid} = State.start_link("initial state")
-State.set(pid, "works")
+State.set(pid, {:increment, 1})
 State.get(pid)
+:sys.get_state(pid)
 ```
 
 Create a minimal `Named` [GenServer](https://hexdocs.pm/elixir/GenServer.html) that can be started and configured as a named process using `Named.start_link/1`. Start a `Named` process and use [GenServer.whereis/1](https://hexdocs.pm/elixir/GenServer.html#whereis/1) and/or [Process.whereis/1](https://hexdocs.pm/elixir/Process.html#whereis/1) to find the pid of the named process.
@@ -382,9 +383,7 @@ defmodule NamedState do
   end
 end
 
-{:ok, pid} = NamedState.start_link("initial state")
-:sys.get_state(pid) |> IO.puts()
-GenServer.whereis(pid)
+{:ok, pid} = NamedState.start_link(2)
 ```
 
 ## Commit Your Progress
