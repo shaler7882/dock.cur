@@ -105,6 +105,149 @@ You can create a horizontal bar using either the `<hr></hr>` element, or an empt
 
 ![](images/card_component_light_mode.png)
 
+```elixir
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        .head {
+            font-size: 2rem;
+            text-align: center;
+        }
+
+        .tail {
+            font-size: 20px;
+            text-align: center;
+        }
+
+        .body {
+            border-style: solid;
+            border-width: medium;
+            height: 400px;
+            width: 200px;
+            border-radius: 0px 25px;
+
+        }
+
+        .mainbody {
+            text-align: center;
+        }
+
+        .image {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            border-radius: 0px 23px 0px 0px;
+        }
+    </style>
+</head>
+
+<body class="body">
+
+    <img class="image" src="https://picsum.photos/200/100"></img>
+    <div class="head">Card Heading</div>
+    <div class="tail">Card Subtitle</div>
+    <div class="mainbody">body of the letter.more of the body</div>
+
+</body>
+
+</html>
+```
+
+```elixir
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        .white {
+            padding: 1rem;
+            background-color: white;
+            text-align: center;
+            font-size: 200%;
+            text-shadow: 3px 2px red;
+        }
+
+        .red {
+            padding: 1rem;
+            background-color: red;
+        }
+
+        .orange {
+            padding: 1rem;
+            background-color: orange;
+        }
+
+        .yellow {
+            padding: 1rem;
+            background-color: yellow;
+        }
+
+        .green {
+            padding: 1rem;
+            background-color: green;
+        }
+
+        .blue {
+            padding: 1rem;
+            background-color: blue;
+        }
+
+        .purple {
+            padding: 1rem;
+            background-color: purple;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="purple">
+        <div class="blue">
+            <div class="green">
+                <div class="yellow">
+                    <div class="orange">
+                        <div class="red">
+                            <div class="white">All the colors of the rainbow!</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+</html>
+```
+
+```elixir
+<!DOCTYPE html>
+<html>
+
+<body>
+
+    <button>Click Me!
+        <style>
+            button {
+                background-color: white;
+                font-size: 40px;
+                border: 5px solid orange;
+                border-radius: 60px;
+                padding: 10px;
+            }
+
+            button:hover {
+                background-color: orange;
+                cursor: pointer
+            }
+        </style>
+</body>
+
+</html>
+```
+
 ## Commit Your Progress
 
 DockYard Academy now recommends you use the latest [Release](https://github.com/DockYard-Academy/curriculum/releases) rather than forking or cloning our repository.
